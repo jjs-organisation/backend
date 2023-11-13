@@ -1,0 +1,69 @@
+const multer = require("multer");
+const fs = require("fs");
+
+function genUserId() {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < 20) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
+
+function genProjectId() {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < 35) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
+
+function genBillId() {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < 50) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
+
+function stringify(obj) {
+    let cache = [];
+    let str = JSON.stringify(obj, function(key, value) {
+        if (typeof value === "object" && value !== null) {
+            if (cache.indexOf(value) !== -1) {
+                return;
+            }
+            cache.push(value);
+        }
+        return value;
+    });
+    cache = null;
+    return str;
+}
+
+function uploadFiles(userId) {
+    let path = `files/projects/${userId}`
+    fs.mkdir(path, { recursive: true }, function () {
+
+    });
+}
+
+
+module.exports = {
+    genBillId,
+    genProjectId,
+    stringify,
+    uploadFiles,
+    genUserId
+}
