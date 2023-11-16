@@ -1,9 +1,11 @@
-const {QueryToMySql} = require("./lib/mysql");
-const {genUserId, genProjectId, stringify} = require("./lib/operations");
-const express = require('express'),{ build_path } = require('../config'),
+const {QueryToMySql} = require("./lib/mysql"),
+{genUserId, genProjectId, stringify} = require("./lib/operations"),
+express = require('express'),{ build_path } = require('../config'),
     router = express.Router(),
-    bodyparser = require("body-parser");
-const cors = require("cors");
+    HostingCore = require('./lib/hosting-core'),
+    bodyparser = require("body-parser"),
+    {resolve} = require('path');
+    cors = require("cors");
 router.use(bodyparser.urlencoded({ extended: false }))
 router.use(bodyparser.json());
 router.use(cors({
@@ -49,6 +51,17 @@ async function getProjects(json, callback) {
         });
 }
 
+async function runProject(json, callback) {
+    let pId = json.id;
+    let uId = json.uid;
+    let path = resolve(__dirname + `../../files/projects/${uId}/${pId}/`)
+    await HostingCore.initProject(path).then(() => {
+        setTimeout(async () => {
+            await HostingCore.runProject(path)
+        }, 10000) // TODO: set to 15000
+    })
+}
+
 router.post('/create', async (req, res) => {
     let r = req.body;
     await createProject(r, function (re) {
@@ -74,6 +87,16 @@ router.post('/get', async (req, res) => {
                     console.log('тут полная глина произошла')
                 }
             }
+    })
+})
+
+router.post('/run', async (req, res) => {
+    let r = req.body;
+    await runProject(r, function (re) {
+        if (re === false)
+            res.status(200).send(false)
+        else
+            res.status(200).send(true)
     })
 })
 
