@@ -13,6 +13,18 @@ function genUserId() {
     return result;
 }
 
+function genVerifyCode(){
+    let result = '';
+    const characters = '0123456789'
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < 6) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
+
 function genProjectId() {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -35,6 +47,27 @@ function genBillId() {
         counter += 1;
     }
     return result;
+}
+
+function genVerifyId() {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < 50) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
+
+function createDirs(path, callback) {
+    fs.mkdir(path, { recursive: true }, function (err, path) {
+        if (err)
+            callback(err)
+        else
+            callback(path)
+    })
 }
 
 function stringify(obj) {
@@ -65,5 +98,8 @@ module.exports = {
     genProjectId,
     stringify,
     uploadFiles,
+    createDirs,
+    genVerifyId,
+    genVerifyCode,
     genUserId
 }

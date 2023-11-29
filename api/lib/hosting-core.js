@@ -42,6 +42,7 @@ const fs = require("fs");
         "author": "",
         "license": "ISC",
         "dependencies": {
+
         }
     }
 }.call(this));

@@ -40,12 +40,12 @@ async function getProjects(json, callback) {
                 console.log(err)
                 callback(false)
             }else {
-                console.log('projects-found')
+                console.log(res)
                 try {
                     callback(res)
                 }
                 catch (e) {
-                    callback('xui')
+                    callback(false)
                 }
             }
         });

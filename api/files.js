@@ -1,5 +1,5 @@
 const {QueryToMySql} = require("./lib/mysql");
-const {genUserId, genProjectId, stringify, upload, uploadFiles} = require("./lib/operations");
+const {genUserId, genProjectId, stringify, upload, uploadFiles, createDirs} = require("./lib/operations");
 const express = require('express'),{ build_path } = require('../config'),
     router = express.Router(),
     bodyparser = require("body-parser"),
@@ -21,9 +21,9 @@ router.post('/upload/:userId/:projectId',async (req, res) => {
     const userId = req.params.userId;
     const projectId = req.params.projectId;
     const path = __dirname +`../../files/projects/${userId}/${projectId}/`
+    createDirs(path, async function () {})
     let fstream;
     req.pipe(req.busboy);
-    await fsDef.mkdir(path, {recursive: true}, function () {})
     req.busboy.on('file', async function (fieldname, file, filename) {
         console.log("Uploading: " + filename.filename);
         fstream = fs.createWriteStream(path + filename.filename);

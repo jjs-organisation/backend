@@ -12,8 +12,8 @@ const express = require("express"),
     path = require("path"),
     fs = require("fs"),
     https = require("https"),
-    key = fs.readFileSync(__dirname + '/sert/selfsigned.key'),
-    cert = fs.readFileSync(__dirname + '/sert/selfsigned.crt'),
+    key = fs.readFileSync(__dirname + '/sert/localhost/ru2/unijs.key'),
+    cert = fs.readFileSync(__dirname + '/sert/localhost/ru2/unijs.crt'),
     bodyparser = require("body-parser"),
     options = {
         key: key,
@@ -47,9 +47,9 @@ const server_https = https.createServer(options, app);
 
 
 server_http.listen(port, () => {
-    console.log(`server running at https://95.163.233.114:${sport}`)
+    console.log(`server running at http://95.163.233.114:${port} || http://localhost:${port}`)
 });
 
 server_https.listen(sport, () => {
-    console.log(`server running at https://95.163.233.114:${sport}`)
+    console.log(`server running at https://95.163.233.114:${sport} || https://localhost:${sport}`)
 });
