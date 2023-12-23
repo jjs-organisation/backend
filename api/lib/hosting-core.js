@@ -1,34 +1,14 @@
 "use strict";
-const os = require("os"),
-    pty = require("node-pty"),
-    shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash';
 const fs = require("fs");
 
 (function () {
     module.exports = this.HostingCore = new class{
         initProject = async (path) => {
-            if (!fs.existsSync(`${path}/package.json`)){
-                fs.writeFile(`${path}/package.json`, JSON.stringify(DefaultPackageFile),{}, function () {
-
-                })
-            }
-            let term = pty.spawn(shell, [
-                `cd ` + path.toString() + '\n',
-                'npm i --force\n',
-            ], {});
-            term.on('data', async function (data) {
-                await console.log(data)
-            })
+            // TODO: create init project command with Docker
         }
 
         runProject = async (path) => {
-            let term = pty.spawn(shell, [
-                `cd ` + path.toString() + '\n',
-                `node index.js \n`
-            ], {});
-            term.on('data', async function (data) {
-                await console.log(data)
-            })
+            // TODO: create run project command with Docker
         }
     }
     const DefaultPackageFile = {
@@ -45,4 +25,14 @@ const fs = require("fs");
 
         }
     }
+    // const {Docker} = require('node-docker-api');
+    // const docker = new Docker({ socketPath: '/var/run/docker.sock' });
+    //
+    // docker.container.create({
+    //     Image: 'node',
+    //     name: 'test'
+    // })
+    //     .then(container => container.start())
+    //     .then(container => container.stop())
+    //     .catch(error => console.log(error));
 }.call(this));
