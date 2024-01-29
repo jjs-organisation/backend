@@ -1,0 +1,1 @@
+{"project":{"name":"ads","version":"1.0.0","id":"uZVQaAZVBUKjPUXpzR7aSc46ipEHKxyp5HL","user_id":"OaH8qffMxPMXVHQhXOaT","type":"nodejs","hosting":{"entry":"","name":"","requires_load":false,"launch_script":"node index.js"},"gitignore":"/node_modules","package_json":{"name":"ads","version":"1.0.0","dependencies":{},"author":"unigpt_blessed"}}}

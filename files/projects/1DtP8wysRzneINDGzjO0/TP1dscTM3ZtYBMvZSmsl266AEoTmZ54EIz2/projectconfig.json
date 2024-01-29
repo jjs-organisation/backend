@@ -1,0 +1,1 @@
+{"project":{"name":"sdf","version":"1.0.0","id":"TP1dscTM3ZtYBMvZSmsl266AEoTmZ54EIz2","user_id":"1DtP8wysRzneINDGzjO0","type":"nodejs","hosting":{"entry":"","name":"","requires_load":false,"launch_script":"node index.js"},"gitignore":"/node_modules","package_json":{"name":"sdf","version":"1.0.0","dependencies":{},"author":"IgorP"}}}

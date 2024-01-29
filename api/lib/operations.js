@@ -61,6 +61,22 @@ function genVerifyId() {
     return result;
 }
 
+function genPostId() {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < 100) {
+        if (counter % 5 === 0){
+            result += '-'
+        }else {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        counter += 1;
+    }
+    return result;
+}
+
 function createDirs(path, callback) {
     fs.mkdir(path, { recursive: true }, function (err, path) {
         if (err)
@@ -101,5 +117,6 @@ module.exports = {
     createDirs,
     genVerifyId,
     genVerifyCode,
+    genPostId,
     genUserId
 }

@@ -1,0 +1,1 @@
+{"project":{"name":"szd","version":"1.0.0","id":"l4nWGtGxGXVUB5BtZfUc5h5xNAHzlKumnv9","user_id":"1DtP8wysRzneINDGzjO0","type":"nodejs","hosting":{"entry":"","name":"","requires_load":false,"launch_script":"node index.js"},"gitignore":"/node_modules","package_json":{"name":"szd","version":"1.0.0","dependencies":{},"author":"IgorP"}}}

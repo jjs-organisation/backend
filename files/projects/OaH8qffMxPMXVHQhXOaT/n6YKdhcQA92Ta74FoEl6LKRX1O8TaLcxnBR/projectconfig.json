@@ -1,0 +1,1 @@
+{"project":{"name":"dsv","version":"1.0.0","id":"n6YKdhcQA92Ta74FoEl6LKRX1O8TaLcxnBR","user_id":"OaH8qffMxPMXVHQhXOaT","type":"nodejs","hosting":{"entry":"","name":"","requires_load":false,"launch_script":"node index.js"},"gitignore":"/node_modules","package_json":{"name":"dsv","version":"1.0.0","dependencies":{},"author":"unigpt_blessed"}}}

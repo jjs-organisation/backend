@@ -1,0 +1,1 @@
+{"project":{"name":"csv","version":"1.0.0","id":"ae6Q0bczHKTihu2QNAHFryfSHQV3Q0Ucsxl","user_id":"OaH8qffMxPMXVHQhXOaT","type":"nodejs","hosting":{"entry":"","name":"","requires_load":false,"launch_script":"node index.js"},"gitignore":"/node_modules","package_json":{"name":"csv","version":"1.0.0","dependencies":{},"author":"unigpt_blessed"}}}
