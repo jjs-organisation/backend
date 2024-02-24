@@ -16,6 +16,9 @@
     "nodemailer": "^6.9.7",
     "pug": "^3.0.2"
   },
+  "scripts": {
+    "build": "node npm/build.js"
+  },
   "author": {
     "programmer": "exezt-"
   }

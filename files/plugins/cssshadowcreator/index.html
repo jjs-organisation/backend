@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_plugin</title>
+</head>
+<body>
+    <div class="frame">
+        <span id="1" class="defSpanClass"> classes work test ? plugins </span>
+        <br/>
+        <input type="button" onclick="a()" value="click on me"/>
+    </div>
+    <style>
+        .defSpanClass{
+            font-size: 32px;
+        }
+        .class1{
+            color: wheat;
+        }
+        .class2{
+            color: green;
+        }
+        .class3{
+            color:  red;
+        }
+    </style>
+    <script>
+        function a(){
+            let symb = Math.floor(Math.random() * 4)
+            let classes = [
+                'class1',
+                'class2',
+                'class3'
+            ]
+            classes.forEach(e=>{
+                document.getElementById('1').classList.remove(e)
+            })
+            document.getElementById('1').classList.add('class'+symb)
+        }
+    </script>
+</body>
+</html>

@@ -44,9 +44,13 @@ router.post('/save', async (req, res) => {
 router.get('/viewhtml/:userid/:projectid', async (req,res) => {
     let uId = req.params.userid,
         pId = req.params.projectid;
-
-    let html2 = fs.readFileSync(path.resolve(`${__dirname}../../../files/projects/${uId}/${pId}/index.html`), 'utf-8')
-    res.status(200).send(html2)
+    try {
+        let html2 = fs.readFileSync(path.resolve(`${__dirname}../../../files/projects/${uId}/${pId}/index.html`),
+            'utf-8')
+        res.status(200).send(html2);
+    } catch (e) {
+        res.status(404).send('not found')
+    }
 });
 
 router.post('/load', async (req, res) => {

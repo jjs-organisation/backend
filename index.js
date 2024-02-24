@@ -9,6 +9,7 @@ const express = require("express"),
     posts_api = require('./api/posts_router'),
     state_api = require('./api/api_state_viewer/state'),
     forum_api = require('./api/api_forum/forum_router'),
+    plugins_api = require('./api/api_plugins/plugins_router'),
     port = 3450,
     sport = 3451,
     http = require("http"),
@@ -18,11 +19,13 @@ const express = require("express"),
     https = require("https"),
     key = fs.readFileSync(__dirname + '/sert/localhost/ru1/selfsigned.key'), //ru1/unijs.key
     cert = fs.readFileSync(__dirname + '/sert/localhost/ru1/selfsigned.crt'), //ru1/unijs.crt
-    bodyparser = require("body-parser"),
     options = {
         key: key,
         cert: cert
     },
+    server_http = http.createServer(app),
+    server_https = https.createServer(options, app),
+    bodyparser = require("body-parser"),
     allowedOrigins = {
         origin: '*'
     };
@@ -36,7 +39,8 @@ app.use('/neiro/', neiro_api);
 app.use('/billing/', billing_api);
 app.use('/posts/', posts_api);
 app.use('/state/', state_api);
-app.use('/forum/', forum_api)
+app.use('/forum/', forum_api);
+app.use('/plugins/', plugins_api)
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -53,9 +57,6 @@ app.get('/po',() => {
 app.get('/', (req, res) => {
     res.send('Now using https..');
 });
-
-const server_http = http.createServer(app);
-const server_https = https.createServer(options, app);
 
 server_http.listen(port, () => {
     console.log(`server running at http://95.163.233.114:${port} || http://localhost:${port}`)
