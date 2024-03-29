@@ -14,7 +14,8 @@
     "node-docker-api": "^1.1.22",
     "node-pty": "^1.0.0",
     "nodemailer": "^6.9.7",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "xhr2": "^0.2.1"
   },
   "scripts": {
     "build": "node npm/build.js"

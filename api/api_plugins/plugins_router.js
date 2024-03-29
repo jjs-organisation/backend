@@ -70,4 +70,15 @@ router.post('/deleteall', async function(req, res) {
     })
 });
 
+router.post('/deleteplugin', async function(req,res) {
+    let pluginId = req.body.plugin_id;
+    let userId = req.body.user_id;
+    await PluginsDB.prototype.DeletePlugin(userId, pluginId, function (result) {
+        if (result === false)
+            res.status(501).send(`error at backend sql operation`)
+        else
+            res.status(200).send(true)
+    })
+});
+
 module.exports = router;

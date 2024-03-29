@@ -136,6 +136,37 @@ class PluginsDB {
             else console.log('deleted for ' + userId)
         })
     }
+    async DeletePlugin(userId, pluginId, callback){
+        QueryToMySqlPlugins(`SELECT \`plugins_list\` FROM \`plugins_installdb\` WHERE \`user_id\`='${userId}'`,
+            function (err,res,rows) {
+                if (err)
+                    callback(false)
+                else {
+                    let prevResult = JSON.parse(res)[0].plugins_list;
+                    let resArray = [];
+                    prevResult.split(',').forEach((el, i, array) => {
+                        if (el !== pluginId)
+                            resArray.push(el)
+                    })
+                    let finalArray = [];
+                    resArray.toString().split(',').forEach((el, i) => {
+                        if (i > 0)
+                            finalArray.push(`,${el}`)
+                        else
+                            finalArray.push(`${el}`)
+                    })
+                    console.log(finalArray)
+                    QueryToMySqlPlugins(`UPDATE \`plugins_installdb\` 
+                        SET \`plugins_list\`='${finalArray}' 
+                        WHERE \`user_id\`='${userId}'`, function (err, result) {
+                        if (err)
+                            callback(false)
+                        else
+                            callback(true)
+                    })
+                }
+            })
+    }
 }
 module.exports = {
     PluginsDB,

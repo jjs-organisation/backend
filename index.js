@@ -1,4 +1,6 @@
 "use strict";
+global.XMLHttpRequest = require( 'xhr2');
+
 const express = require("express"),
     app = express(),
     router_users = require('./api/users'),
