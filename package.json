@@ -6,6 +6,7 @@
     "brain.js": "^2.0.0-beta.23",
     "connect-busboy": "^1.0.0",
     "cors": "^2.8.5",
+    "dree": "^4.7.0",
     "express": "^4.18.2",
     "formidable": "^3.5.1",
     "fs-extra": "^11.1.1",
@@ -20,7 +21,8 @@
   "scripts": {
     "build": "node npm/build.js"
   },
-  "author": {
-    "programmer": "exezt-"
+  "team": {
+    "programmer": "exezt-",
+    "designer": "7even"
   }
 }
